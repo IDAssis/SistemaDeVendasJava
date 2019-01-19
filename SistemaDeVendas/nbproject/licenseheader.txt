@@ -1,0 +1,9 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}A software developed by
+${licensePrefix}Sergio Vago R. de Melo (back-end) and Isabella de Assis Santos (front-end)
+${licensePrefix}SR Tech - "Blow your mind" 
+<#if licenseLast??>
+${licenseLast}
+</#if>
