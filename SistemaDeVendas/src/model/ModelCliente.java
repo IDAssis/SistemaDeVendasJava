@@ -13,6 +13,7 @@ public class ModelCliente {
     private String cliUf;
     private String cliCep;
     private String cliTelefone;
+    private String cliCpf;
 
     /**
     * Construtor
@@ -134,5 +135,19 @@ public class ModelCliente {
     @Override
     public String toString(){
         return "ModelCliente {" + "::idCliente = " + this.idCliente + "::cliNome = " + this.cliNome + "::cliEndereco = " + this.cliEndereco + "::cliBairro = " + this.cliBairro + "::cliCidade = " + this.cliCidade + "::cliUf = " + this.cliUf + "::cliCep = " + this.cliCep + "::cliTelefone = " + this.cliTelefone +  "}";
+    }
+
+    /**
+     * @return the cliCpf
+     */
+    public String getCliCpf() {
+        return cliCpf;
+    }
+
+    /**
+     * @param cliCpf the cliCpf to set
+     */
+    public void setCliCpf(String cliCpf) {
+        this.cliCpf = cliCpf;
     }
 }

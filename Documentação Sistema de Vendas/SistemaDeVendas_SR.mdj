@@ -268,6 +268,24 @@
 											"height": 13,
 											"text": "+telefone: String",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAForn/kjcjwy2g=",
+											"_parent": {
+												"$ref": "AAAAAAFoSibYDNpOj1c="
+											},
+											"model": {
+												"$ref": "AAAAAAForn/kgMjtRtw="
+											},
+											"fillColor": "#d8e5ff",
+											"font": "Arial;13;0",
+											"left": 821,
+											"top": 510,
+											"width": 196.9169921875,
+											"height": 13,
+											"text": "+cpf: String",
+											"horizontalAlignment": 0
 										}
 									],
 									"fillColor": "#d8e5ff",
@@ -275,7 +293,7 @@
 									"left": 816,
 									"top": 385,
 									"width": 206.9169921875,
-									"height": 128
+									"height": 143
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -299,7 +317,7 @@
 											"fillColor": "#d8e5ff",
 											"font": "Arial;13;0",
 											"left": 821,
-											"top": 518,
+											"top": 533,
 											"width": 196.9169921875,
 											"height": 13,
 											"text": "+cadastrarCliente(Cliente): void",
@@ -317,7 +335,7 @@
 											"fillColor": "#d8e5ff",
 											"font": "Arial;13;0",
 											"left": 821,
-											"top": 533,
+											"top": 548,
 											"width": 196.9169921875,
 											"height": 13,
 											"text": "+alterarCliente(Cliente): Cliente",
@@ -335,7 +353,7 @@
 											"fillColor": "#d8e5ff",
 											"font": "Arial;13;0",
 											"left": 821,
-											"top": 548,
+											"top": 563,
 											"width": 196.9169921875,
 											"height": 13,
 											"text": "+excluirCliente(int): void",
@@ -345,7 +363,7 @@
 									"fillColor": "#d8e5ff",
 									"font": "Arial;13;0",
 									"left": 816,
-									"top": 513,
+									"top": 528,
 									"width": 206.9169921875,
 									"height": 53
 								},
@@ -390,7 +408,7 @@
 							"left": 816,
 							"top": 360,
 							"width": 206.9169921875,
-							"height": 206,
+							"height": 221,
 							"nameCompartment": {
 								"$ref": "AAAAAAFoSibYDNpJY2c="
 							},
@@ -1431,7 +1449,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 789,
-									"top": 538,
+									"top": 542,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -1452,7 +1470,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 796,
-									"top": 551,
+									"top": 556,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -1473,7 +1491,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 776,
-									"top": 511,
+									"top": 515,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -1491,7 +1509,7 @@
 								"$ref": "AAAAAAFoSibYDNpIeuQ="
 							},
 							"lineStyle": 1,
-							"points": "815:515;752:547",
+							"points": "815:520;752:550",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFoSjV/7N4H//U="
@@ -5096,6 +5114,15 @@
 							},
 							"name": "telefone",
 							"type": "String"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAForn/kgMjtRtw=",
+							"_parent": {
+								"$ref": "AAAAAAFoSibYC9pGw00="
+							},
+							"name": "cpf",
+							"type": "String"
 						}
 					],
 					"operations": [
@@ -5877,13 +5904,28 @@
 													"top": 413,
 													"width": 120.42626953125,
 													"height": 13
+												},
+												{
+													"_type": "ERDColumnView",
+													"_id": "AAAAAAForn95ND6grZQ=",
+													"_parent": {
+														"$ref": "AAAAAAFoSjlleuae9dM="
+													},
+													"model": {
+														"$ref": "AAAAAAForn95Jj6dG84="
+													},
+													"font": "Arial;13;0",
+													"left": 285,
+													"top": 428,
+													"width": 120.42626953125,
+													"height": 13
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 280,
 											"top": 303,
 											"width": 130.42626953125,
-											"height": 128
+											"height": 143
 										}
 									],
 									"font": "Arial;13;0",
@@ -6664,6 +6706,15 @@
 										"$ref": "AAAAAAFoSjlleuaantY="
 									},
 									"name": "cli_telefone",
+									"length": 0
+								},
+								{
+									"_type": "ERDColumn",
+									"_id": "AAAAAAForn95Jj6dG84=",
+									"_parent": {
+										"$ref": "AAAAAAFoSjlleuaantY="
+									},
+									"name": "cli_CPF",
 									"length": 0
 								}
 							]

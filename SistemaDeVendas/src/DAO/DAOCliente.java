@@ -23,7 +23,7 @@ public class DAOCliente extends ConexaoMySql {
         try {
             this.conectar();
             return this.insertSQL(
-                "INSERT INTO tbl_cliente ("
+                "INSERT INTO tbl_cliente ("  
                     + "cli_nome,"
                     + "cli_endereco,"
                     + "cli_bairro,"
@@ -31,6 +31,7 @@ public class DAOCliente extends ConexaoMySql {
                     + "cli_uf,"
                     + "cli_cep,"
                     + "cli_telefone"
+                    + "cli_cpf"
                 + ") VALUES ("
                     + "'" + pModelCliente.getCliNome() + "',"
                     + "'" + pModelCliente.getCliEndereco() + "',"
@@ -39,6 +40,7 @@ public class DAOCliente extends ConexaoMySql {
                     + "'" + pModelCliente.getCliUf() + "',"
                     + "'" + pModelCliente.getCliCep() + "',"
                     + "'" + pModelCliente.getCliTelefone() + "'"
+                    + "'" + pModelCliente.getCliCpf() + "'"
                 + ");"
             );
         }catch(Exception e){
@@ -68,6 +70,7 @@ public class DAOCliente extends ConexaoMySql {
                     + "cli_uf,"
                     + "cli_cep,"
                     + "cli_telefone"
+                    + "cli_cpf"
                  + " FROM"
                      + " tbl_cliente"
                  + " WHERE"
@@ -112,6 +115,7 @@ public class DAOCliente extends ConexaoMySql {
                     + "cli_uf,"
                     + "cli_cep,"
                     + "cli_telefone"
+                    + "cli_cpf"
                  + " FROM"
                      + " tbl_cliente"
                 + ";"
@@ -155,6 +159,7 @@ public class DAOCliente extends ConexaoMySql {
                     + "cli_uf = '" + pModelCliente.getCliUf() + "',"
                     + "cli_cep = '" + pModelCliente.getCliCep() + "',"
                     + "cli_telefone = '" + pModelCliente.getCliTelefone() + "'"
+                    + "cli_cpf = '" + pModelCliente.getCliCpf()+ "'"        
                 + " WHERE "
                     + "pk_id_cliente = '" + pModelCliente.getIdCliente() + "'"
                 + ";"
