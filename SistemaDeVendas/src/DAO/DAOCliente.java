@@ -30,7 +30,7 @@ public class DAOCliente extends ConexaoMySql {
                     + "cli_cidade,"
                     + "cli_uf,"
                     + "cli_cep,"
-                    + "cli_telefone"
+                    + "cli_telefone,"
                     + "cli_cpf"
                 + ") VALUES ("
                     + "'" + pModelCliente.getCliNome() + "',"
@@ -39,7 +39,7 @@ public class DAOCliente extends ConexaoMySql {
                     + "'" + pModelCliente.getCliCidade() + "',"
                     + "'" + pModelCliente.getCliUf() + "',"
                     + "'" + pModelCliente.getCliCep() + "',"
-                    + "'" + pModelCliente.getCliTelefone() + "'"
+                    + "'" + pModelCliente.getCliTelefone() + "',"
                     + "'" + pModelCliente.getCliCpf() + "'"
                 + ");"
             );
@@ -114,7 +114,7 @@ public class DAOCliente extends ConexaoMySql {
                     + "cli_cidade,"
                     + "cli_uf,"
                     + "cli_cep,"
-                    + "cli_telefone"
+                    + "cli_telefone,"
                     + "cli_cpf"
                  + " FROM"
                      + " tbl_cliente"
@@ -131,6 +131,7 @@ public class DAOCliente extends ConexaoMySql {
                 modelCliente.setCliUf(this.getResultSet().getString(6));
                 modelCliente.setCliCep(this.getResultSet().getString(7));
                 modelCliente.setCliTelefone(this.getResultSet().getString(8));
+                modelCliente.setCliCpf(this.getResultSet().getString(9));
                 listamodelCliente.add(modelCliente);
             }
         }catch(Exception e){

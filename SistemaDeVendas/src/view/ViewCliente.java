@@ -75,10 +75,11 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jtfCodigo = new javax.swing.JTextField();
+        jbLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("CPF:");
+        jLabel1.setText("CPF/CNPJ:");
 
         jLabel2.setText("Nome:");
 
@@ -99,14 +100,14 @@ public class ViewCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CPF", "Nome do Cliente", "Cidade", "Telefone"
+                "ID", "CPF", "Nome do Cliente", "Cidade", "Telefone"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -124,12 +125,22 @@ public class ViewCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtCliente);
         if (jtCliente.getColumnModel().getColumnCount() > 0) {
-            jtCliente.getColumnModel().getColumn(0).setPreferredWidth(20);
+            jtCliente.getColumnModel().getColumn(0).setMinWidth(5);
+            jtCliente.getColumnModel().getColumn(0).setPreferredWidth(5);
+            jtCliente.getColumnModel().getColumn(1).setPreferredWidth(20);
+            jtCliente.getColumnModel().getColumn(3).setPreferredWidth(10);
+            jtCliente.getColumnModel().getColumn(4).setPreferredWidth(10);
         }
 
-        jcbUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ES", "RJ", "SP" }));
+        jcbUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        jcbUF.setSelectedIndex(7);
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         jbSalvar.setText("Salvar");
         jbSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,11 +173,18 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jLabel6.setText("Pesqusar:");
 
-        jcbTipoPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPF", "Nome" }));
+        jcbTipoPesquisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPF/CNPJ", "Nome" }));
 
         jLabel7.setText("Pesquisar por:");
 
         jLabel8.setText("Código:");
+
+        jbLimpar.setText("Limpar");
+        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -184,28 +202,11 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbSalvar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfEndereco, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 135, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jtfCodigo))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,13 +230,30 @@ public class ViewCliente extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 19, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbTipoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcbTipoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfCodigo)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -243,14 +261,14 @@ public class ViewCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -283,7 +301,8 @@ public class ViewCliente extends javax.swing.JFrame {
                     .addComponent(jbSalvar)
                     .addComponent(jbNovo)
                     .addComponent(jbAlterar)
-                    .addComponent(jbExcluir))
+                    .addComponent(jbExcluir)
+                    .addComponent(jbLimpar))
                 .addContainerGap())
         );
 
@@ -301,14 +320,10 @@ public class ViewCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisarKeyPressed
-        this.pesquisaTabela();
-    }//GEN-LAST:event_jtfPesquisarKeyPressed
-
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         int linha = jtCliente.getSelectedRow();
         int codigoCliente = (int) jtCliente.getValueAt(linha, 0);
-        if(controllerCliente.excluirClienteController(codigoCliente)){
+        if (controllerCliente.excluirClienteController(codigoCliente)) {
             JOptionPane.showMessageDialog(this, "Cliente excluido com sucesso!");
             this.carregarCliente();
         } else {
@@ -317,8 +332,7 @@ public class ViewCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbExcluirActionPerformed
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
-        this.habilitaCampos(true);
-        this.jbSalvar.setEnabled(true);
+        this.habilitaCamposCadastro("novo");
     }//GEN-LAST:event_jbNovoActionPerformed
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
@@ -329,9 +343,11 @@ public class ViewCliente extends javax.swing.JFrame {
         modelCliente.setCliUf(this.jcbUF.getSelectedItem().toString().toUpperCase());
         modelCliente.setCliCep(this.jtfCEP.getText().toUpperCase());
         modelCliente.setCliTelefone(this.jtfTelefone.getText().toUpperCase());
+        modelCliente.setCliCpf(this.jtfCPF.getText().toUpperCase());
 
         if (controllerCliente.salvarClienteController(modelCliente) > 0) {
             JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
+            this.habilitaCamposCadastro("");
             this.carregarCliente();
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao cadastrar cliente!", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -342,6 +358,18 @@ public class ViewCliente extends javax.swing.JFrame {
         jbAlterar.setEnabled(true);
         jbExcluir.setEnabled(true);
     }//GEN-LAST:event_jtClienteFocusGained
+
+    private void jtfPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisarKeyPressed
+        this.pesquisaTabela();
+    }//GEN-LAST:event_jtfPesquisarKeyPressed
+
+    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
+        this.limparCampos();
+    }//GEN-LAST:event_jbLimparActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        this.habilitaCamposCadastro("");
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,6 +415,7 @@ public class ViewCliente extends javax.swing.JFrame {
         for (int i = 0; i < cont; i++) {
             modelo.addRow(new Object[]{
                 listaModelCliente.get(i).getIdCliente(),
+                listaModelCliente.get(i).getCliCpf(),
                 listaModelCliente.get(i).getCliNome(),
                 listaModelCliente.get(i).getCliCidade(),
                 listaModelCliente.get(i).getCliTelefone()
@@ -403,6 +432,7 @@ public class ViewCliente extends javax.swing.JFrame {
         jtfNome.setEnabled(condicao);
         jtfTelefone.setEnabled(condicao);
         jcbUF.setEnabled(condicao);
+        jbLimpar.setEnabled(condicao);
     }
 
     private void iniciaHabilitado(boolean condicao) {
@@ -416,13 +446,40 @@ public class ViewCliente extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) this.jtCliente.getModel();
         final TableRowSorter<TableModel> classificador = new TableRowSorter<>(modelo);
         this.jtCliente.setRowSorter(classificador);
-        if(this.jcbUF.getSelectedItem().toString().toUpperCase().equals("CPF")){
-            String texto = jtfPesquisar.getText().toUpperCase();
-            classificador.setRowFilter(RowFilter.regexFilter(texto, 0));
-        } else {
+        if (this.jcbTipoPesquisa.getSelectedItem().toString().toUpperCase().equals("CPF/CNPJ")) {
             String texto = jtfPesquisar.getText().toUpperCase();
             classificador.setRowFilter(RowFilter.regexFilter(texto, 1));
+        } else {
+            String texto = jtfPesquisar.getText().toUpperCase();
+            classificador.setRowFilter(RowFilter.regexFilter(texto, 2));
         }
+    }
+
+    private void limparCampos() {
+        jtfBairro.setText("");
+        jtfCEP.setText("");
+        jtfCPF.setText("");
+        jtfCidade.setText("");
+        jtfEndereco.setText("");
+        jtfNome.setText("");
+        jtfTelefone.setText("");
+    }
+
+    private void habilitaCamposCadastro(String tipo) {
+        if (tipo.equals("novo")) {
+            this.habilitaCampos(true);
+            this.jbSalvar.setEnabled(true);
+            this.jbLimpar.setEnabled(true);
+            this.jbCancelar.setEnabled(true);
+            this.jbNovo.setEnabled(false);
+        } else {
+            this.habilitaCampos(false);
+            this.jbSalvar.setEnabled(false);
+            this.jbLimpar.setEnabled(false);
+            this.jbCancelar.setEnabled(false);
+            this.jbNovo.setEnabled(true);
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -442,6 +499,7 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JButton jbAlterar;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbExcluir;
+    private javax.swing.JButton jbLimpar;
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JComboBox<String> jcbTipoPesquisa;
