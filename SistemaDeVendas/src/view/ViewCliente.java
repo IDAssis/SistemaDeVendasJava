@@ -58,7 +58,6 @@ public class ViewCliente extends javax.swing.JFrame {
         jtfCidade = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jtfCEP = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jtfTelefone = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -76,8 +75,10 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jtfCodigo = new javax.swing.JTextField();
         jbLimpar = new javax.swing.JButton();
+        jtfCEP = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cliente");
 
         jLabel1.setText("CPF/CNPJ:");
 
@@ -157,6 +158,11 @@ public class ViewCliente extends javax.swing.JFrame {
         });
 
         jbAlterar.setText("Alterar");
+        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAlterarActionPerformed(evt);
+            }
+        });
 
         jbExcluir.setText("Excluir");
         jbExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +191,12 @@ public class ViewCliente extends javax.swing.JFrame {
                 jbLimparActionPerformed(evt);
             }
         });
+
+        try {
+            jtfCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -221,14 +233,14 @@ public class ViewCliente extends javax.swing.JFrame {
                             .addComponent(jcbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
+                            .addComponent(jLabel10)
+                            .addComponent(jtfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfTelefone)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jtfTelefone)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 19, Short.MAX_VALUE)
                         .addComponent(jLabel6)
@@ -284,9 +296,9 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -332,7 +344,7 @@ public class ViewCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbExcluirActionPerformed
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
-        this.habilitaCamposCadastro("novo");
+        this.habilitaBotoesCadastro("novo");
     }//GEN-LAST:event_jbNovoActionPerformed
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
@@ -345,14 +357,36 @@ public class ViewCliente extends javax.swing.JFrame {
         modelCliente.setCliTelefone(this.jtfTelefone.getText().toUpperCase());
         modelCliente.setCliCpf(this.jtfCPF.getText().toUpperCase());
 
+        if (this.jtfCodigo.getText().equals("")) {
+            this.salvarCliente();
+        } else {
+            this.alterarCliente();
+        }
+    }//GEN-LAST:event_jbSalvarActionPerformed
+
+    private void salvarCliente() {
         if (controllerCliente.salvarClienteController(modelCliente) > 0) {
             JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
-            this.habilitaCamposCadastro("");
+            this.habilitaBotoesCadastro("");
             this.carregarCliente();
+            this.limparCampos();
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao cadastrar cliente!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jbSalvarActionPerformed
+    }
+
+    private void alterarCliente() {
+        modelCliente.setIdCliente(Integer.parseInt(this.jtfCodigo.getText().toUpperCase()));
+        if (controllerCliente.atualizarClienteController(modelCliente)) {
+            JOptionPane.showMessageDialog(this, "Cliente alterado com sucesso!");
+            this.habilitaBotoesCadastro("");
+            this.carregarCliente();
+            this.limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao alterar cliente!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     private void jtClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtClienteFocusGained
         jbAlterar.setEnabled(true);
@@ -368,8 +402,28 @@ public class ViewCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLimparActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        this.habilitaCamposCadastro("");
+        this.limparCampos();
+        this.habilitaBotoesCadastro("");
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        int linha = jtCliente.getSelectedRow();
+        int coidigoCliente = (int) jtCliente.getValueAt(linha, 0);
+
+        modelCliente = controllerCliente.getClienteController(coidigoCliente);
+        jtfNome.setText(modelCliente.getCliNome());
+        jtfEndereco.setText(modelCliente.getCliEndereco());
+        jtfBairro.setText(modelCliente.getCliBairro());
+        jtfCEP.setText(modelCliente.getCliCep());
+        jtfCPF.setText(modelCliente.getCliCpf());
+        jtfCidade.setText(modelCliente.getCliCidade());
+        jcbUF.setSelectedItem(modelCliente.getCliUf());
+        jtfCodigo.setText(Integer.toString(modelCliente.getIdCliente()));
+        jtfTelefone.setText(modelCliente.getCliTelefone());
+
+        this.habilitaCampos(true);
+        this.habilitaBotoesCadastro("atualizar");
+    }//GEN-LAST:event_jbAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,8 +519,8 @@ public class ViewCliente extends javax.swing.JFrame {
         jtfTelefone.setText("");
     }
 
-    private void habilitaCamposCadastro(String tipo) {
-        if (tipo.equals("novo")) {
+    private void habilitaBotoesCadastro(String tipo) {
+        if (tipo.equals("novo") || tipo.equals("atualizar")) {
             this.habilitaCampos(true);
             this.jbSalvar.setEnabled(true);
             this.jbLimpar.setEnabled(true);
@@ -506,7 +560,7 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbUF;
     private javax.swing.JTable jtCliente;
     private javax.swing.JTextField jtfBairro;
-    private javax.swing.JTextField jtfCEP;
+    private javax.swing.JFormattedTextField jtfCEP;
     private javax.swing.JTextField jtfCPF;
     private javax.swing.JTextField jtfCidade;
     private javax.swing.JTextField jtfCodigo;

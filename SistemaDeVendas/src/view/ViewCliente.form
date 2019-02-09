@@ -2,7 +2,8 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Cliente"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -73,16 +74,16 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtfCEP" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfCEP" min="-2" pref="79" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtfTelefone" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="jtfTelefone" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -153,9 +154,9 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jtfBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtfCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtfCEP" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtfTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jcbUF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfCEP" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -225,8 +226,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="CEP:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtfCEP">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -359,6 +358,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Alterar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAlterarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbExcluir">
           <Properties>
@@ -410,6 +412,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbLimparActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="jtfCEP">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="#####-###" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
