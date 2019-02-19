@@ -58,6 +58,7 @@ public class ViewUsuario extends javax.swing.JFrame {
         jbNovo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Usuario");
 
         jLabel1.setText("Código:");
 
