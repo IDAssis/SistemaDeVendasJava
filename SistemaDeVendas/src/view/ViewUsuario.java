@@ -47,7 +47,6 @@ public class ViewUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jtfLogin = new javax.swing.JTextField();
-        jtfSenha = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtUsuario = new javax.swing.JTable();
@@ -56,6 +55,7 @@ public class ViewUsuario extends javax.swing.JFrame {
         jbExcluir = new javax.swing.JButton();
         jbAlterar = new javax.swing.JButton();
         jbNovo = new javax.swing.JButton();
+        jpfSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Usuario");
@@ -147,7 +147,7 @@ public class ViewUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jtfSenha)))
+                            .addComponent(jpfSenha)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jbCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -178,7 +178,7 @@ public class ViewUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -208,7 +208,7 @@ public class ViewUsuario extends javax.swing.JFrame {
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         modelUsuario.setUsuNome(jtfNome.getText().toUpperCase());
         modelUsuario.setUsuLogin(jtfLogin.getText().toUpperCase());
-        modelUsuario.setUsuSenha(jtfSenha.getText());
+        modelUsuario.setUsuSenha(String.valueOf(jpfSenha.getPassword()));
 
         if (this.jtfCodigo.getText().equals("")) {
             salvarCliente();
@@ -258,7 +258,7 @@ public class ViewUsuario extends javax.swing.JFrame {
         jtfCodigo.setText(String.valueOf(modelUsuario.getIdUsuario()));
         jtfNome.setText(modelUsuario.getUsuNome());
         jtfLogin.setText(modelUsuario.getUsuLogin());
-        jtfSenha.setText(modelUsuario.getUsuSenha());
+        jpfSenha.setText(modelUsuario.getUsuSenha());
     }//GEN-LAST:event_jbAlterarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
@@ -320,7 +320,7 @@ public class ViewUsuario extends javax.swing.JFrame {
         jtfCodigo.setText("");
         jtfLogin.setText("");
         jtfNome.setText("");
-        jtfSenha.setText("");
+        jpfSenha.setText("");
     }
 
     private void iniciaHabilitado() {
@@ -339,10 +339,10 @@ public class ViewUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbSalvar;
+    private javax.swing.JPasswordField jpfSenha;
     private javax.swing.JTable jtUsuario;
     private javax.swing.JTextField jtfCodigo;
     private javax.swing.JTextField jtfLogin;
     private javax.swing.JTextField jtfNome;
-    private javax.swing.JTextField jtfSenha;
     // End of variables declaration//GEN-END:variables
 }

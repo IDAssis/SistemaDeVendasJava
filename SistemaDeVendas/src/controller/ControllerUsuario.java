@@ -31,9 +31,8 @@ public class ControllerUsuario {
     }
 
     /**
-    * recupera uma lista deUsuario
-    * @param pIdUsuario
-    * return ArrayList
+    * recupera uma lista deUsuario 
+    * @return ArrayList
     */
     public ArrayList<ModelUsuario> getListaUsuarioController(){
         return this.daoUsuario.getListaUsuarioDAO();
@@ -42,7 +41,7 @@ public class ControllerUsuario {
     /**
     * atualiza Usuario
     * @param pModelUsuario
-    * return boolean
+    * @return boolean
     */
     public boolean atualizarUsuarioController(ModelUsuario pModelUsuario){
         return this.daoUsuario.atualizarUsuarioDAO(pModelUsuario);
@@ -55,5 +54,14 @@ public class ControllerUsuario {
     */
     public boolean excluirUsuarioController(int pIdUsuario){
         return this.daoUsuario.excluirUsuarioDAO(pIdUsuario);
+    }
+
+    /**
+     * 
+     * @param pModelUsuario
+     * @return boolean 
+     */
+    public boolean getValidarUsuarioController(ModelUsuario pModelUsuario) {
+        return this.daoUsuario.getValidarUsuarioDAO(pModelUsuario);
     }
 }

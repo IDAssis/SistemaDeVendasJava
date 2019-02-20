@@ -129,7 +129,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiClientesActionPerformed
 
     private void jmiUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiUsuariosActionPerformed
-        new ViewCliente().setVisible(true);
+        new ViewUsuario().setVisible(true);
     }//GEN-LAST:event_jmiUsuariosActionPerformed
 
     /**
