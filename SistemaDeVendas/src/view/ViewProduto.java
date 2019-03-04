@@ -114,8 +114,8 @@ public class ViewProduto extends javax.swing.JFrame {
         }
 
         jtfPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtfPesquisarKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfPesquisarKeyReleased(evt);
             }
         });
 
@@ -318,9 +318,9 @@ public class ViewProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbAlterarActionPerformed
 
-    private void jtfPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisarKeyPressed
+    private void jtfPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisarKeyReleased
         this.pesquisaTabela();
-    }//GEN-LAST:event_jtfPesquisarKeyPressed
+    }//GEN-LAST:event_jtfPesquisarKeyReleased
 
     /**
      * @param args the command line arguments
