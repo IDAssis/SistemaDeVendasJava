@@ -56,6 +56,16 @@ public class ControllerProduto {
         return this.daoProduto.retornarProdutoDAO(pIdProduto);
     }
     
+    /**
+     * Retorna produto controller
+     * 
+     * @param pNomeProduto
+     * @return ModelProduto
+     */
+    public ModelProduto retornarProdutoController(String pNomeProduto){
+        return this.daoProduto.retornarProdutoDAO(pNomeProduto);
+    }
+    
     
     /**
      * Retorna lista produto controller

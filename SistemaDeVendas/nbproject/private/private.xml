@@ -5,15 +5,17 @@
         <group>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/model/ModelVendas.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOVendas.java</file>
-            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOVendasProdutos.java</file>
+            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DaoProduto.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/view/ViewVendas.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/view/ViewCliente.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/controller/ControllerUsuario.java</file>
-            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/view/ViewProduto.java</file>
-            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOUsuario.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/view/ViewUsuario.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/view/ViewPrincipal.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/view/ViewLogin.java</file>
+            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOVendasProdutos.java</file>
+            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/view/ViewProduto.java</file>
+            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOUsuario.java</file>
+            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/controller/ControllerProduto.java</file>
         </group>
     </open-files>
 </project-private>

@@ -31,6 +31,7 @@ public class ViewVendas extends javax.swing.JFrame {
         initComponents();
         listarClientes();
         listarProdutos();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -82,6 +83,7 @@ public class ViewVendas extends javax.swing.JFrame {
 
         jLabel1.setText("Código Cliente:");
 
+        jtfCodigoCliente.setText("1");
         jtfCodigoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtfCodigoClienteKeyReleased(evt);
@@ -104,9 +106,20 @@ public class ViewVendas extends javax.swing.JFrame {
 
         jLabel4.setText("Código Produto:");
 
+        jtfCodigoProduto.setText("1");
         jtfCodigoProduto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtfCodigoProdutoKeyReleased(evt);
+            }
+        });
+
+        jcbNomeProduto.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jcbNomeProdutoPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
 
@@ -336,7 +349,7 @@ public class ViewVendas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -347,15 +360,20 @@ public class ViewVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfCodigoClienteKeyReleased
 
     private void jtfCodigoProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCodigoProdutoKeyReleased
-        this.pesquisarProduto();
+        this.pesquisarProduto(0);
     }//GEN-LAST:event_jtfCodigoProdutoKeyReleased
 
     private void jcbNomeClientePopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbNomeClientePopupMenuWillBecomeInvisible
         if (jcbNomeCliente.isPopupVisible()) {
             this.pesquisarCliente(1);
-        } else {
         }
     }//GEN-LAST:event_jcbNomeClientePopupMenuWillBecomeInvisible
+
+    private void jcbNomeProdutoPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbNomeProdutoPopupMenuWillBecomeInvisible
+        if (jcbNomeProduto.isPopupVisible()) {
+            this.pesquisarProduto(1);
+        }
+    }//GEN-LAST:event_jcbNomeProdutoPopupMenuWillBecomeInvisible
 
     /**
      * @param args the command line arguments
@@ -465,10 +483,15 @@ public class ViewVendas extends javax.swing.JFrame {
 
     }
 
-    private void pesquisarProduto() {
-        if (!(jtfCodigoProduto.getText().equals(""))) {
-            modelProduto = controllerProdutos.retornarProdutoController(Integer.parseInt(jtfCodigoProduto.getText()));
-            jcbNomeProduto.setSelectedItem(modelProduto.getProNome());
+    private void pesquisarProduto(int pTipo) {
+        if (pTipo == 0) { //Pesquisa por ID
+            if (!(jtfCodigoProduto.getText().equals(""))) {
+                modelProduto = controllerProdutos.retornarProdutoController(Integer.parseInt(jtfCodigoProduto.getText()));
+                jcbNomeProduto.setSelectedItem(modelProduto.getProNome());
+            }
+        } else if (pTipo == 1) { //Pesquisar por Nome
+            modelProduto = controllerProdutos.retornarProdutoController(jcbNomeProduto.getSelectedItem().toString());
+            jtfCodigoProduto.setText(String.valueOf(modelProduto.getIdProduto()));
         }
     }
 }
