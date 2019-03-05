@@ -81,7 +81,7 @@ public class DAOVendasProdutos extends ConexaoMySql {
         * return ArrayList
     */
     public ArrayList<ModelVendasProdutos> getListaVendasProdutosDAO(){
-        ArrayList<ModelVendasProdutos> listamodelVendasProdutos = new ArrayList();
+        ArrayList<ModelVendasProdutos> listaModelVendasProdutos = new ArrayList();
         ModelVendasProdutos modelVendasProdutos = new ModelVendasProdutos();
         try {
             this.conectar();
@@ -104,14 +104,14 @@ public class DAOVendasProdutos extends ConexaoMySql {
                 modelVendasProdutos.setVendas(this.getResultSet().getInt(3));
                 modelVendasProdutos.setVenProValor(this.getResultSet().getDouble(4));
                 modelVendasProdutos.setVenProQuantidade(this.getResultSet().getInt(5));
-                listamodelVendasProdutos.add(modelVendasProdutos);
+                listaModelVendasProdutos.add(modelVendasProdutos);
             }
         }catch(Exception e){
             e.printStackTrace();
         }finally{
             this.fecharConexao();
         }
-        return listamodelVendasProdutos;
+        return listaModelVendasProdutos;
     }
 
     /**

@@ -77,7 +77,7 @@ public class DAOUsuario extends ConexaoMySql {
         * return ArrayList
     */
     public ArrayList<ModelUsuario> getListaUsuarioDAO(){
-        ArrayList<ModelUsuario> listamodelUsuario = new ArrayList();
+        ArrayList<ModelUsuario> listaModelUsuario = new ArrayList();
         ModelUsuario modelUsuario = new ModelUsuario();
         try {
             this.conectar();
@@ -98,14 +98,14 @@ public class DAOUsuario extends ConexaoMySql {
                 modelUsuario.setUsuNome(this.getResultSet().getString(2));
                 modelUsuario.setUsuLogin(this.getResultSet().getString(3));
                 modelUsuario.setUsuSenha(this.getResultSet().getString(4));
-                listamodelUsuario.add(modelUsuario);
+                listaModelUsuario.add(modelUsuario);
             }
         }catch(Exception e){
             e.printStackTrace();
         }finally{
             this.fecharConexao();
         }
-        return listamodelUsuario;
+        return listaModelUsuario;
     }
 
     /**

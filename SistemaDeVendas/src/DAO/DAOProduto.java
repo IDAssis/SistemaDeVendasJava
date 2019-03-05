@@ -13,7 +13,7 @@ import model.ModelProduto;
  *
  * @author Sergio
  */
-public class DaoProduto extends ConexaoMySql {
+public class DAOProduto extends ConexaoMySql {
 
     /**
      * Cadastrar produto no banco

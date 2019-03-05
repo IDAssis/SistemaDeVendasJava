@@ -5,7 +5,7 @@
  */
 package controller;
 
-import DAO.DaoProduto;
+import DAO.DAOProduto;
 import java.util.ArrayList;
 import model.ModelProduto;
 
@@ -14,7 +14,7 @@ import model.ModelProduto;
  * @author Sergio
  */
 public class ControllerProduto {
-    private DaoProduto daoProduto = new DaoProduto();
+    private DAOProduto daoProduto = new DAOProduto();
     
     /**
      * Salvar produto controller

@@ -148,7 +148,7 @@ public class DAOCliente extends ConexaoMySql {
         * return ArrayList
     */
     public ArrayList<ModelCliente> getListaClienteDAO(){
-        ArrayList<ModelCliente> listamodelCliente = new ArrayList();
+        ArrayList<ModelCliente> listaModelCliente = new ArrayList();
         ModelCliente modelCliente = new ModelCliente();
         try {
             this.conectar();
@@ -179,14 +179,14 @@ public class DAOCliente extends ConexaoMySql {
                 modelCliente.setCliCep(this.getResultSet().getString(7));
                 modelCliente.setCliTelefone(this.getResultSet().getString(8));
                 modelCliente.setCliCpf(this.getResultSet().getString(9));
-                listamodelCliente.add(modelCliente);
+                listaModelCliente.add(modelCliente);
             }
         }catch(Exception e){
             e.printStackTrace();
         }finally{
             this.fecharConexao();
         }
-        return listamodelCliente;
+        return listaModelCliente;
     }
 
     /**
