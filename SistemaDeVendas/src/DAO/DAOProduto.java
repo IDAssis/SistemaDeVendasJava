@@ -188,4 +188,29 @@ public class DAOProduto extends ConexaoMySql {
 
         return listaModelProduto;
     }
+
+    /**
+     * Alterar estoque de produtos
+     * @param pListaModelProdutos
+     * @return 
+     */
+    public boolean alterarEstoqueProdutoDAO(ArrayList<ModelProduto> pListaModelProdutos) {
+        try {
+            this.conectar();
+            int cont = pListaModelProdutos.size();
+            for (int i = 0; i < cont; i++) {
+                this.executarUpdateDeleteSQL(
+                    "UPDATE tbl_produto SET "
+                        + "pro_estoque = '" + pListaModelProdutos.get(i).getProEstoque() + "'"
+                        + " WHERE pk_id_produto = '" + pListaModelProdutos.get(i).getIdProduto() + "'"
+                );
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
+    }
 }

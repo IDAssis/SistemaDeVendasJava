@@ -33,7 +33,7 @@ public class ViewVendas extends javax.swing.JFrame {
     ArrayList<ModelCliente> listaModelClientes = new ArrayList<>();
     ControllerProduto controllerProdutos = new ControllerProduto();
     ModelProduto modelProduto = new ModelProduto();
-    ArrayList<ModelProduto> listaModelProduto = new ArrayList<>();
+    ArrayList<ModelProduto> listaModelProdutos = new ArrayList<>();
     ArrayList<ModelVendasCliente> listaModelVendasCliente = new ArrayList<>();
     ControllerVendasCliente controllerVendasCliente = new ControllerVendasCliente();
     ControllerVendas controllerVendas = new ControllerVendas();
@@ -484,7 +484,7 @@ public class ViewVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_JbNovoActionPerformed
 
     private void jbSalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarCadastroActionPerformed
-        int codigoVenda = 0;
+        int codigoVenda = 0, codigoProduto = 0;
         listaModelVendasProdutos = new ArrayList<>();
         modelVendas.setCliente(Integer.parseInt(jtfCodigoCliente.getText()));
         try {
@@ -504,16 +504,24 @@ public class ViewVendas extends javax.swing.JFrame {
 
         int cont = jtProdutosVenda.getRowCount();
         for (int i = 0; i < cont; i++) {
+            codigoProduto = (int) jtProdutosVenda.getValueAt(i, 0);
             modelVendasProdutos = new ModelVendasProdutos();
-            modelVendasProdutos.setProduto((int) jtProdutosVenda.getValueAt(i, 0));
+            modelProduto = new ModelProduto();
+            
+            modelVendasProdutos.setProduto(codigoProduto);
             modelVendasProdutos.setVendas(codigoVenda);
             modelVendasProdutos.setVenProValor((double) jtProdutosVenda.getValueAt(i, 3));
             modelVendasProdutos.setVenProQuantidade(Integer.parseInt(jtProdutosVenda.getValueAt(i, 2).toString()));
-
+            //Produto
+            modelProduto.setIdProduto(codigoProduto);
+            modelProduto.setProEstoque(controllerProdutos.retornarProdutoController(codigoProduto).getProEstoque()
+                - Integer.parseInt(jtProdutosVenda.getValueAt(i, 2).toString()));
             listaModelVendasProdutos.add(modelVendasProdutos);
+            listaModelProdutos.add(modelProduto);
         }
         //Salvar os produtos da venda
         if(controllerVendasProdutos.salvarVendasProdutosController(listaModelVendasProdutos)){
+            controllerProdutos.alterarEstoqueProdutoController(listaModelProdutos);
             JOptionPane.showMessageDialog(this, "Produtos da venda salvos com successo!");
             this.carregarVendas();
             this.limparFormulario();
@@ -613,10 +621,10 @@ public class ViewVendas extends javax.swing.JFrame {
      * Preenche o ComboBoxProdutos com todos os produtos
      */
     private void listarProdutos() {
-        listaModelProduto = controllerProdutos.retornaListaProdutoController();
+        listaModelProdutos = controllerProdutos.retornaListaProdutoController();
         jcbNomeProduto.removeAllItems();
-        for (int i = 0; i < listaModelProduto.size(); i++) {
-            jcbNomeProduto.addItem(listaModelProduto.get(i).getProNome());
+        for (int i = 0; i < listaModelProdutos.size(); i++) {
+            jcbNomeProduto.addItem(listaModelProdutos.get(i).getProNome());
         }
     }
 

@@ -10,7 +10,9 @@
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/model/ModelVendasCliente.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOVendasCliente.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/controller/ControllerVendasProdutos.java</file>
+            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/controller/ControllerProduto.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOCliente.java</file>
+            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOProduto.java</file>
         </group>
     </open-files>
 </project-private>
