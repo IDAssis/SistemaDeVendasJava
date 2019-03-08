@@ -6,9 +6,10 @@
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/controller/ControllerVendasCliente.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOVendas.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/view/ViewVendas.java</file>
+            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOVendasProdutos.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/model/ModelVendasCliente.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOVendasCliente.java</file>
-            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/view/ViewProduto.java</file>
+            <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/controller/ControllerVendasProdutos.java</file>
             <file>file:/C:/Users/Sergio/SistemaDeVendasJava/SistemaDeVendas/src/DAO/DAOCliente.java</file>
         </group>
     </open-files>
