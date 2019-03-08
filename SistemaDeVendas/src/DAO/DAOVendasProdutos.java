@@ -162,4 +162,37 @@ public class DAOVendasProdutos extends ConexaoMySql {
             this.fecharConexao();
         }
     }
+
+    /**
+    * Salva lista de produtos da venda
+    * @param pListaModelVendasProdutos
+    * @return 
+    */
+    public boolean salvarVendasProdutosDAO(ArrayList<ModelVendasProdutos> pListaModelVendasProdutos) {
+        try {
+            this.conectar();
+            int cont = pListaModelVendasProdutos.size();
+            for (int i = 0; i < cont; i++) {
+                this.insertSQL(
+                    "INSERT INTO tbl_vendas_produtos ("
+                        + "fk_produto,"
+                        + "fk_vendas,"
+                        + "ven_pro_valor,"
+                        + "ven_pro_quantidade"
+                    + ") VALUES ("
+                        + "'" + pListaModelVendasProdutos.get(i).getProduto() + "',"
+                        + "'" + pListaModelVendasProdutos.get(i).getVendas() + "',"
+                        + "'" + pListaModelVendasProdutos.get(i).getVenProValor() + "',"
+                        + "'" + pListaModelVendasProdutos.get(i).getVenProQuantidade() + "'"
+                    + ");"
+                );
+            }
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }finally{
+            this.fecharConexao();
+        }
+    }
 }

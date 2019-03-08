@@ -9,12 +9,18 @@ import controller.ControllerCliente;
 import controller.ControllerProduto;
 import controller.ControllerVendas;
 import controller.ControllerVendasCliente;
+import controller.ControllerVendasProdutos;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ModelCliente;
 import model.ModelProduto;
+import model.ModelVendas;
 import model.ModelVendasCliente;
+import model.ModelVendasProdutos;
+import util.BLDatas;
 
 /**
  *
@@ -31,6 +37,11 @@ public class ViewVendas extends javax.swing.JFrame {
     ArrayList<ModelVendasCliente> listaModelVendasCliente = new ArrayList<>();
     ControllerVendasCliente controllerVendasCliente = new ControllerVendasCliente();
     ControllerVendas controllerVendas = new ControllerVendas();
+    ModelVendas modelVendas = new ModelVendas();
+    BLDatas bLDatas = new BLDatas();
+    ControllerVendasProdutos controllerVendasProdutos = new ControllerVendasProdutos();
+    ModelVendasProdutos modelVendasProdutos = new ModelVendasProdutos();
+    ArrayList<ModelVendasProdutos> listaModelVendasProdutos = new ArrayList<>();
 
     /**
      * Creates new form ViewVendas
@@ -174,6 +185,11 @@ public class ViewVendas extends javax.swing.JFrame {
         });
 
         jbSalvarCadastro.setText("Salvar");
+        jbSalvarCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarCadastroActionPerformed(evt);
+            }
+        });
 
         jtfDesconto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -467,6 +483,45 @@ public class ViewVendas extends javax.swing.JFrame {
         this.limparFormulario();
     }//GEN-LAST:event_JbNovoActionPerformed
 
+    private void jbSalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarCadastroActionPerformed
+        int codigoVenda = 0;
+        listaModelVendasProdutos = new ArrayList<>();
+        modelVendas.setCliente(Integer.parseInt(jtfCodigoCliente.getText()));
+        try {
+            modelVendas.setVenDataVenda(bLDatas.converterDataParaDateUS(new java.util.Date(System.currentTimeMillis())));
+        } catch (Exception e) {
+        }
+        modelVendas.setVenValor(Double.parseDouble(jtfValorTotal.getText()) + Double.parseDouble(jtfDesconto.getText()));
+        modelVendas.setVenValorTotal(Double.parseDouble(jtfValorTotal.getText()));
+        modelVendas.setVenDesconto(Double.parseDouble(jtfDesconto.getText()));
+
+        codigoVenda = controllerVendas.salvarVendasController(modelVendas);
+        if (codigoVenda > 0) {
+            JOptionPane.showMessageDialog(this, "Venda realizada com successo!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao realizar venda!", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+
+        int cont = jtProdutosVenda.getRowCount();
+        for (int i = 0; i < cont; i++) {
+            modelVendasProdutos = new ModelVendasProdutos();
+            modelVendasProdutos.setProduto((int) jtProdutosVenda.getValueAt(i, 0));
+            modelVendasProdutos.setVendas(codigoVenda);
+            modelVendasProdutos.setVenProValor((double) jtProdutosVenda.getValueAt(i, 3));
+            modelVendasProdutos.setVenProQuantidade(Integer.parseInt(jtProdutosVenda.getValueAt(i, 2).toString()));
+
+            listaModelVendasProdutos.add(modelVendasProdutos);
+        }
+        //Salvar os produtos da venda
+        if(controllerVendasProdutos.salvarVendasProdutosController(listaModelVendasProdutos)){
+            JOptionPane.showMessageDialog(this, "Produtos da venda salvos com successo!");
+            this.carregarVendas();
+            this.limparFormulario();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar produtos da venda venda!", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbSalvarCadastroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -628,8 +683,8 @@ public class ViewVendas extends javax.swing.JFrame {
             });
         }
     }
-    
-    private void limparFormulario(){
+
+    private void limparFormulario() {
         jtfQuantidade.setText("");
         jtfDesconto.setText("");
         jtfValorTotal.setText("");
