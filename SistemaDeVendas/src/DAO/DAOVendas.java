@@ -60,7 +60,7 @@ public class DAOVendas extends ConexaoMySql {
                  + " FROM"
                      + " tbl_vendas"
                  + " WHERE"
-                     + " pk_id_venda = '" + pIdVenda + "'"
+                     + " pk_id_vendas = '" + pIdVenda + "'"
                 + ";"
             );
 
@@ -137,7 +137,7 @@ public class DAOVendas extends ConexaoMySql {
                     + "ven_valor_total = '" + pModelVendas.getVenValorTotal() + "',"
                     + "ven_desconto = '" + pModelVendas.getVenDesconto() + "'"
                 + " WHERE "
-                    + "pk_id_venda = '" + pModelVendas.getIdVenda() + "'"
+                    + "pk_id_vendas = '" + pModelVendas.getIdVenda() + "'"
                 + ";"
             );
         }catch(Exception e){
