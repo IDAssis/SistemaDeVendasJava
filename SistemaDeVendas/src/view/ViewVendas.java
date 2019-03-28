@@ -75,13 +75,11 @@ public class ViewVendas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jtfCodigoCliente = new javax.swing.JTextField();
-        jcbNomeCliente = new componentes.UJComboBox();
         jLabel2 = new javax.swing.JLabel();
         jtfNumeroVenda = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jtfCodigoProduto = new javax.swing.JTextField();
-        jcbNomeProduto = new componentes.UJComboBox();
         jLabel5 = new javax.swing.JLabel();
         jtfQuantidade = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -98,6 +96,8 @@ public class ViewVendas extends javax.swing.JFrame {
         jrbRS = new javax.swing.JRadioButton();
         jrbPorcento = new javax.swing.JRadioButton();
         jbRemoverProdutos = new javax.swing.JButton();
+        jcbNomeProduto = new componentes.UJComboBox();
+        jcbNomeCliente = new componentes.UJComboBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jtfPesquisar = new javax.swing.JTextField();
@@ -107,7 +107,6 @@ public class ViewVendas extends javax.swing.JFrame {
         jtVendas = new javax.swing.JTable();
         jbExcluir = new javax.swing.JButton();
         jbAlterar = new javax.swing.JButton();
-        jbSalvarCEA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,16 +115,6 @@ public class ViewVendas extends javax.swing.JFrame {
         jtfCodigoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtfCodigoClienteKeyReleased(evt);
-            }
-        });
-
-        jcbNomeCliente.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                jcbNomeClientePopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
 
@@ -138,16 +127,6 @@ public class ViewVendas extends javax.swing.JFrame {
         jtfCodigoProduto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtfCodigoProdutoKeyReleased(evt);
-            }
-        });
-
-        jcbNomeProduto.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                jcbNomeProdutoPopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
 
@@ -220,6 +199,28 @@ public class ViewVendas extends javax.swing.JFrame {
             }
         });
 
+        jcbNomeProduto.setAutocompletar(true);
+        jcbNomeProduto.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jcbNomeProdutoPopupMenuWillBecomeVisible(evt);
+            }
+        });
+
+        jcbNomeCliente.setAutocompletar(true);
+        jcbNomeCliente.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jcbNomeClientePopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -238,8 +239,8 @@ public class ViewVendas extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcbNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jcbNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -298,8 +299,8 @@ public class ViewVendas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNumeroVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNumeroVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -308,9 +309,9 @@ public class ViewVendas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbAdicionar))
+                    .addComponent(jbAdicionar)
+                    .addComponent(jcbNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -375,13 +376,6 @@ public class ViewVendas extends javax.swing.JFrame {
             }
         });
 
-        jbSalvarCEA.setText("Salvar");
-        jbSalvarCEA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalvarCEAActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -391,20 +385,20 @@ public class ViewVendas extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jrbNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jrbData)
-                        .addGap(0, 237, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jbExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbSalvarCEA)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jrbData))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jbExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbAlterar)))
+                        .addGap(0, 237, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -421,8 +415,7 @@ public class ViewVendas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbExcluir)
-                    .addComponent(jbAlterar)
-                    .addComponent(jbSalvarCEA))
+                    .addComponent(jbAlterar))
                 .addContainerGap())
         );
 
@@ -449,18 +442,6 @@ public class ViewVendas extends javax.swing.JFrame {
     private void jtfCodigoProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCodigoProdutoKeyReleased
         this.pesquisarProduto(0);
     }//GEN-LAST:event_jtfCodigoProdutoKeyReleased
-
-    private void jcbNomeClientePopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbNomeClientePopupMenuWillBecomeInvisible
-        if (jcbNomeCliente.isPopupVisible()) {
-            this.pesquisarCliente(1);
-        }
-    }//GEN-LAST:event_jcbNomeClientePopupMenuWillBecomeInvisible
-
-    private void jcbNomeProdutoPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbNomeProdutoPopupMenuWillBecomeInvisible
-        if (jcbNomeProduto.isPopupVisible()) {
-            this.pesquisarProduto(1);
-        }
-    }//GEN-LAST:event_jcbNomeProdutoPopupMenuWillBecomeInvisible
 
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         int linha = jtVendas.getSelectedRow();
@@ -578,11 +559,11 @@ public class ViewVendas extends javax.swing.JFrame {
             //Salvar os produtos da venda
             if (controllerVendasProdutos.salvarVendasProdutosController(listaModelVendasProdutos)) {
                 controllerProdutos.alterarEstoqueProdutoController(listaModelProdutos);
-                JOptionPane.showMessageDialog(this, "Produtos da venda salvos com successo!");
+                //JOptionPane.showMessageDialog(this, "Produtos da venda salvos com successo!");
                 this.carregarVendas();
                 this.limparFormulario();
             } else {
-                JOptionPane.showMessageDialog(this, "Erro ao salvar produtos da venda venda!", "ERRO", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Erro ao salvar produtos da venda!", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             int linha = jtVendas.getSelectedRow();
@@ -599,7 +580,7 @@ public class ViewVendas extends javax.swing.JFrame {
             }
             if (controllerProdutos.alterarEstoqueProdutoController(listaModelProdutos)) {
                 if (controllerVendasProdutos.excluirVendasProdutosController(codigoVenda)) {
-                    JOptionPane.showMessageDialog(this, "Venda excluida com successo!");
+                    //JOptionPane.showMessageDialog(this, "Venda excluida com successo!");
                     this.carregarVendas();
                 } else {
                     JOptionPane.showMessageDialog(this, "Erro ao excluir a venda!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -609,7 +590,7 @@ public class ViewVendas extends javax.swing.JFrame {
             }
 
             if(controllerVendas.atualizarVendasController(modelVendas)){
-                JOptionPane.showMessageDialog(this, "Venda alterada com sucesso!");
+                //JOptionPane.showMessageDialog(this, "Venda alterada com sucesso!");
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao alterar a venda", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -643,10 +624,6 @@ public class ViewVendas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbSalvarCadastroActionPerformed
 
-    private void jbSalvarCEAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarCEAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbSalvarCEAActionPerformed
-
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
         alterarSalvar = "alterar";
         int linha = jtVendas.getSelectedRow();
@@ -676,6 +653,18 @@ public class ViewVendas extends javax.swing.JFrame {
         model.removeRow(linha);
         somarValorTotalProdutos();
     }//GEN-LAST:event_jbRemoverProdutosActionPerformed
+
+    private void jcbNomeProdutoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbNomeProdutoPopupMenuWillBecomeVisible
+        if (jcbNomeProduto.isPopupVisible()) {
+            this.pesquisarProduto(1);
+        }
+    }//GEN-LAST:event_jcbNomeProdutoPopupMenuWillBecomeVisible
+
+    private void jcbNomeClientePopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbNomeClientePopupMenuWillBecomeInvisible
+        if (jcbNomeCliente.isPopupVisible()) {
+            this.pesquisarCliente(1);
+        }
+    }//GEN-LAST:event_jcbNomeClientePopupMenuWillBecomeInvisible
 
     /**
      * @param args the command line arguments
@@ -735,7 +724,6 @@ public class ViewVendas extends javax.swing.JFrame {
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbRemoverProdutos;
-    private javax.swing.JButton jbSalvarCEA;
     private javax.swing.JButton jbSalvarCadastro;
     private componentes.UJComboBox jcbNomeCliente;
     private componentes.UJComboBox jcbNomeProduto;
