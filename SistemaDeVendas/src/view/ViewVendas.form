@@ -212,6 +212,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfNumeroVenda">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -299,6 +302,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtProdutosVendaMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -306,6 +312,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCancelarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="JbNovo">
               <Properties>
@@ -400,23 +409,31 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="353" max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jtfPesquisar" min="-2" pref="390" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jrbNome" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jrbData" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="jbExcluir" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jbAlterar" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jtfCpfCpj" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jtfNome" min="-2" pref="376" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="0" pref="237" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jtfData" pref="100" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -427,14 +444,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jrbNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jrbData" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfCpfCpj" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfData" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="340" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="320" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jbExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -448,27 +469,13 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pesquisa:"/>
+                <Property name="text" type="java.lang.String" value="Pesquisar:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtfPesquisar">
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jrbNome">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="SelecaoPesquisa"/>
-                </Property>
-                <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Nome"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jrbData">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="SelecaoPesquisa"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Data"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="jtfNome">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfNomeKeyReleased"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>
@@ -515,6 +522,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtVendasMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -532,6 +542,31 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAlterarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Data:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel11">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel12">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CPF/CNPJ:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtfCpfCpj">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfCpfCpjKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtfData">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfDataKeyReleased"/>
               </Events>
             </Component>
           </SubComponents>

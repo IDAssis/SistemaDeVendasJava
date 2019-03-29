@@ -13,7 +13,10 @@ import controller.ControllerVendasCliente;
 import controller.ControllerVendasProdutos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import model.ModelCliente;
 import model.ModelProduto;
 import model.ModelProdutosVendasProdutos;
@@ -58,6 +61,8 @@ public class ViewVendas extends javax.swing.JFrame {
         pesquisarProduto(1);
         setLocationRelativeTo(null);
         carregarVendas();
+        habilitarBotoes(false);
+        habilitarExcluirAlterar(false);
     }
 
     /**
@@ -100,13 +105,16 @@ public class ViewVendas extends javax.swing.JFrame {
         jcbNomeCliente = new componentes.UJComboBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jtfPesquisar = new javax.swing.JTextField();
-        jrbNome = new javax.swing.JRadioButton();
-        jrbData = new javax.swing.JRadioButton();
+        jtfNome = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtVendas = new javax.swing.JTable();
         jbExcluir = new javax.swing.JButton();
         jbAlterar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jtfCpfCpj = new javax.swing.JTextField();
+        jtfData = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +127,8 @@ public class ViewVendas extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Nome do Cliente:");
+
+        jtfNumeroVenda.setEditable(false);
 
         jLabel3.setText("Nº da Venda:");
 
@@ -157,9 +167,19 @@ public class ViewVendas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jtProdutosVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtProdutosVendaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtProdutosVenda);
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         JbNovo.setText("Novo");
         JbNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -335,14 +355,13 @@ public class ViewVendas extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cadastro", jPanel1);
 
-        jLabel9.setText("Pesquisa:");
+        jLabel9.setText("Pesquisar:");
 
-        SelecaoPesquisa.add(jrbNome);
-        jrbNome.setSelected(true);
-        jrbNome.setText("Nome");
-
-        SelecaoPesquisa.add(jrbData);
-        jrbData.setText("Data");
+        jtfNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfNomeKeyReleased(evt);
+            }
+        });
 
         jtVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -358,6 +377,11 @@ public class ViewVendas extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jtVendas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtVendasMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jtVendas);
@@ -376,6 +400,24 @@ public class ViewVendas extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setText("Data:");
+
+        jLabel11.setText("Nome:");
+
+        jLabel12.setText("CPF/CNPJ:");
+
+        jtfCpfCpj.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfCpfCpjKeyReleased(evt);
+            }
+        });
+
+        jtfData.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfDataKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -385,33 +427,44 @@ public class ViewVendas extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(353, 353, 353)
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jrbNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jrbData))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jbExcluir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbAlterar)))
-                        .addGap(0, 237, Short.MAX_VALUE)))
+                                .addComponent(jbAlterar))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfCpfCpj, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfData, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jtfPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jrbNome)
-                    .addComponent(jrbData))
+                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jtfCpfCpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbExcluir)
@@ -502,8 +555,11 @@ public class ViewVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfDescontoKeyReleased
 
     private void JbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbNovoActionPerformed
-        alterarSalvar = "novo";
+        alterarSalvar = "salvar";
+        habilitarBotoes(true);
         this.limparFormulario();
+        JbNovo.setEnabled(false);
+        jbRemoverProdutos.setEnabled(false);
     }//GEN-LAST:event_JbNovoActionPerformed
 
     private void jbSalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarCadastroActionPerformed
@@ -562,6 +618,8 @@ public class ViewVendas extends javax.swing.JFrame {
                 //JOptionPane.showMessageDialog(this, "Produtos da venda salvos com successo!");
                 this.carregarVendas();
                 this.limparFormulario();
+                habilitarBotoes(false);
+                habilitarExcluirAlterar(false);
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao salvar produtos da venda!", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
@@ -589,13 +647,12 @@ public class ViewVendas extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Erro ao excluir a venda!", "Erro", JOptionPane.ERROR_MESSAGE);
             }
 
-            if(controllerVendas.atualizarVendasController(modelVendas)){
+            if (controllerVendas.atualizarVendasController(modelVendas)) {
                 //JOptionPane.showMessageDialog(this, "Venda alterada com sucesso!");
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao alterar a venda", "Erro", JOptionPane.ERROR_MESSAGE);
             }
 
-            
             int cont = jtProdutosVenda.getRowCount();
             for (int i = 0; i < cont; i++) {
                 codigoProduto = (int) jtProdutosVenda.getValueAt(i, 0);
@@ -613,11 +670,13 @@ public class ViewVendas extends javax.swing.JFrame {
                 listaModelVendasProdutos.add(modelVendasProdutos);
                 listaModelProdutos.add(modelProduto);
             }
-            
-            if(controllerVendasProdutos.salvarVendasProdutosController(listaModelVendasProdutos)){
+
+            if (controllerVendasProdutos.salvarVendasProdutosController(listaModelVendasProdutos)) {
                 JOptionPane.showMessageDialog(this, "Venda salva com sucesso!");
                 this.carregarVendas();
                 this.limparFormulario();
+                habilitarBotoes(false);
+                habilitarExcluirAlterar(false);
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao salvar a venda", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -645,6 +704,7 @@ public class ViewVendas extends javax.swing.JFrame {
         }
         somarValorTotalProdutos();
         jTabbedPane1.setSelectedIndex(0);
+        habilitarBotoes(true);
     }//GEN-LAST:event_jbAlterarActionPerformed
 
     private void jbRemoverProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRemoverProdutosActionPerformed
@@ -652,6 +712,7 @@ public class ViewVendas extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jtProdutosVenda.getModel();
         model.removeRow(linha);
         somarValorTotalProdutos();
+        jbRemoverProdutos.setEnabled(false);
     }//GEN-LAST:event_jbRemoverProdutosActionPerformed
 
     private void jcbNomeProdutoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbNomeProdutoPopupMenuWillBecomeVisible
@@ -665,6 +726,31 @@ public class ViewVendas extends javax.swing.JFrame {
             this.pesquisarCliente(1);
         }
     }//GEN-LAST:event_jcbNomeClientePopupMenuWillBecomeInvisible
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        habilitarBotoes(false);
+        this.limparFormulario();
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jtVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtVendasMouseClicked
+        habilitarExcluirAlterar(true);
+    }//GEN-LAST:event_jtVendasMouseClicked
+
+    private void jtProdutosVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtProdutosVendaMouseClicked
+        jbRemoverProdutos.setEnabled(true);
+    }//GEN-LAST:event_jtProdutosVendaMouseClicked
+
+    private void jtfNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNomeKeyReleased
+        this.pesquisarTabela();
+    }//GEN-LAST:event_jtfNomeKeyReleased
+
+    private void jtfCpfCpjKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCpfCpjKeyReleased
+        this.pesquisarTabela();
+    }//GEN-LAST:event_jtfCpfCpjKeyReleased
+
+    private void jtfDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDataKeyReleased
+        this.pesquisarTabela();
+    }//GEN-LAST:event_jtfDataKeyReleased
 
     /**
      * @param args the command line arguments
@@ -706,6 +792,9 @@ public class ViewVendas extends javax.swing.JFrame {
     private javax.swing.ButtonGroup SelecaoDesconto;
     private javax.swing.ButtonGroup SelecaoPesquisa;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -727,17 +816,17 @@ public class ViewVendas extends javax.swing.JFrame {
     private javax.swing.JButton jbSalvarCadastro;
     private componentes.UJComboBox jcbNomeCliente;
     private componentes.UJComboBox jcbNomeProduto;
-    private javax.swing.JRadioButton jrbData;
-    private javax.swing.JRadioButton jrbNome;
     private javax.swing.JRadioButton jrbPorcento;
     private javax.swing.JRadioButton jrbRS;
     private javax.swing.JTable jtProdutosVenda;
     private javax.swing.JTable jtVendas;
     private javax.swing.JTextField jtfCodigoCliente;
     private javax.swing.JTextField jtfCodigoProduto;
+    private javax.swing.JTextField jtfCpfCpj;
+    private javax.swing.JTextField jtfData;
     private javax.swing.JTextField jtfDesconto;
+    private javax.swing.JTextField jtfNome;
     private javax.swing.JTextField jtfNumeroVenda;
-    private javax.swing.JTextField jtfPesquisar;
     private javax.swing.JTextField jtfQuantidade;
     private javax.swing.JTextField jtfValorTotal;
     // End of variables declaration//GEN-END:variables
@@ -827,9 +916,10 @@ public class ViewVendas extends javax.swing.JFrame {
                 listaModelVendasCliente.get(i).getModelVendas().getIdVenda(),
                 listaModelVendasCliente.get(i).getModelCliente().getCliCpf(),
                 listaModelVendasCliente.get(i).getModelCliente().getCliNome(),
-                listaModelVendasCliente.get(i).getModelVendas().getVenDataVenda()
+                bLDatas.formatarData(listaModelVendasCliente.get(i).getModelVendas().getVenDataVenda())
             });
         }
+
     }
 
     private void limparFormulario() {
@@ -840,4 +930,60 @@ public class ViewVendas extends javax.swing.JFrame {
         modelo.setNumRows(0);
     }
 
+    private void habilitarBotoes(boolean pBool) {
+        jbSalvarCadastro.setEnabled(pBool);
+        jbCancelar.setEnabled(pBool);
+        jbAdicionar.setEnabled(pBool);
+        jbRemoverProdutos.setEnabled(pBool);
+        JbNovo.setEnabled(!pBool);
+        habilitarCampos(pBool);
+    }
+
+    private void habilitarExcluirAlterar(boolean pBool) {
+        jbAlterar.setEnabled(pBool);
+        jbExcluir.setEnabled(pBool);
+    }
+
+    private void habilitarCampos(boolean pBool) {
+        jtfCodigoCliente.setEnabled(pBool);
+        jtfCodigoProduto.setEnabled(pBool);
+        jtfDesconto.setEnabled(pBool);
+        jtfNumeroVenda.setEnabled(pBool);
+        jtfQuantidade.setEnabled(pBool);
+        jtfValorTotal.setEnabled(pBool);
+        jcbNomeCliente.setEnabled(pBool);
+        jcbNomeProduto.setEnabled(pBool);
+    }
+
+    private void pesquisarTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) this.jtVendas.getModel();
+        final TableRowSorter<TableModel> classificador = new TableRowSorter<>(modelo);
+        this.jtVendas.setRowSorter(classificador);
+        if (!(jtfNome.getText().equals(""))) {
+            String texto = jtfNome.getText().toUpperCase();
+            classificador.setRowFilter(RowFilter.regexFilter(texto, 2));
+        }
+        if (!(jtfCpfCpj.getText().equals(""))) {
+            String texto = jtfCpfCpj.getText().toUpperCase();
+            classificador.setRowFilter(RowFilter.regexFilter(texto, 1));
+        }
+        if(!(jtfData.getText().equals(""))) {
+            String texto = jtfData.getText().toUpperCase();
+            texto = formatadorCampoData(texto);
+            System.out.println(texto);
+            jtfData.setText(texto);
+            classificador.setRowFilter(RowFilter.regexFilter(texto, 3));
+        }
+    }
+    
+    private String formatadorCampoData(String pData){
+        if(pData.length() == 2){
+            pData = pData + "/";
+        }
+        if(pData.length() == 5){
+            pData = pData + "/";
+        }
+        
+        return pData;
+    }
 }
