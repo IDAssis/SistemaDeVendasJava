@@ -749,7 +749,9 @@ public class ViewVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfCpfCpjKeyReleased
 
     private void jtfDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDataKeyReleased
-        this.pesquisarTabela();
+        if(jtfData.getText().length() != 3 || jtfData.getText().length() != 5){
+            this.pesquisarTabela();
+        }
     }//GEN-LAST:event_jtfDataKeyReleased
 
     /**
