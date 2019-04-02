@@ -31,6 +31,12 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         uJPanelImagem1 = new componentes.UJPanelImagem();
+        jPanel1 = new javax.swing.JPanel();
+        jbClientes = new javax.swing.JButton();
+        jbProdutos = new javax.swing.JButton();
+        jbVendas = new javax.swing.JButton();
+        jbUsuarios = new javax.swing.JButton();
+        jbUsuarios1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiSair = new javax.swing.JMenuItem();
@@ -39,21 +45,94 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jmiProdutos = new javax.swing.JMenuItem();
         jmiUsuarios = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vendas SR - Sistema de Vendas com Controle de Estoque");
 
         uJPanelImagem1.setImagem(new java.io.File("C:\\Users\\Sergio\\SistemaDeVendasJava\\SistemaDeVendas\\src\\imagens\\SR WALLPAPER.png"));
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jbClientes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbClientes.setText("Clientes");
+        jbClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbClientesActionPerformed(evt);
+            }
+        });
+
+        jbProdutos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbProdutos.setText("Produtos");
+        jbProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbProdutosActionPerformed(evt);
+            }
+        });
+
+        jbVendas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbVendas.setText("Vendas");
+        jbVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVendasActionPerformed(evt);
+            }
+        });
+
+        jbUsuarios.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbUsuarios.setText("Usuários");
+        jbUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbUsuariosActionPerformed(evt);
+            }
+        });
+
+        jbUsuarios1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbUsuarios1.setText("PDV");
+        jbUsuarios1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbUsuarios1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jbClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jbProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+            .addComponent(jbVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+            .addComponent(jbUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+            .addComponent(jbUsuarios1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jbClientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbProdutos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbVendas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbUsuarios)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbUsuarios1))
+        );
+
         javax.swing.GroupLayout uJPanelImagem1Layout = new javax.swing.GroupLayout(uJPanelImagem1);
         uJPanelImagem1.setLayout(uJPanelImagem1Layout);
         uJPanelImagem1Layout.setHorizontalGroup(
             uJPanelImagem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 957, Short.MAX_VALUE)
+            .addGroup(uJPanelImagem1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(761, Short.MAX_VALUE))
         );
         uJPanelImagem1Layout.setVerticalGroup(
             uJPanelImagem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGroup(uJPanelImagem1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Arquivos");
@@ -98,6 +177,15 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Vendas");
+
+        jMenuItem1.setText("Vendas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -131,6 +219,30 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private void jmiUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiUsuariosActionPerformed
         new ViewUsuario().setVisible(true);
     }//GEN-LAST:event_jmiUsuariosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new ViewVendas().setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jbClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbClientesActionPerformed
+        new ViewCliente().setVisible(true);
+    }//GEN-LAST:event_jbClientesActionPerformed
+
+    private void jbProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbProdutosActionPerformed
+        new ViewProduto().setVisible(true);
+    }//GEN-LAST:event_jbProdutosActionPerformed
+
+    private void jbVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVendasActionPerformed
+        new ViewVendas().setVisible(true);
+    }//GEN-LAST:event_jbVendasActionPerformed
+
+    private void jbUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbUsuariosActionPerformed
+        new ViewUsuario().setVisible(true);
+    }//GEN-LAST:event_jbUsuariosActionPerformed
+
+    private void jbUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbUsuarios1ActionPerformed
+        new ViewPDV().setVisible(true);
+    }//GEN-LAST:event_jbUsuarios1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,6 +284,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbClientes;
+    private javax.swing.JButton jbProdutos;
+    private javax.swing.JButton jbUsuarios;
+    private javax.swing.JButton jbUsuarios1;
+    private javax.swing.JButton jbVendas;
     private javax.swing.JMenuItem jmiClientes;
     private javax.swing.JMenuItem jmiProdutos;
     private javax.swing.JMenuItem jmiSair;

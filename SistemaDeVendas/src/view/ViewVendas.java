@@ -116,7 +116,7 @@ public class ViewVendas extends javax.swing.JFrame {
         jtfCpfCpj = new javax.swing.JTextField();
         jtfData = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Código Cliente:");
 
