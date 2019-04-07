@@ -1,3 +1,9 @@
+/*
+ * A software developed by
+ * Sergio Vago R. de Melo (back-end) and Isabella de Assis Santos (front-end)
+ * SR Tech - "Blow your mind" & Mirtilluz Desing
+ */
+
 package conexoes;
 
 import java.sql.Connection;

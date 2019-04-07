@@ -1,3 +1,8 @@
+/*
+ * A software developed by
+ * Sergio Vago R. de Melo (back-end) and Isabella de Assis Santos (front-end)
+ * SR Tech - "Blow your mind" & Mirtilluz Desing
+ */
 package DAO;
 
 import model.ModelUsuario;
@@ -55,6 +60,42 @@ public class DAOUsuario extends ConexaoMySql {
                      + " tbl_usuario"
                  + " WHERE"
                      + " pk_id_usuario = '" + pIdUsuario + "'"
+                + ";"
+            );
+
+            while(this.getResultSet().next()){
+                modelUsuario.setIdUsuario(this.getResultSet().getInt(1));
+                modelUsuario.setUsuNome(this.getResultSet().getString(2));
+                modelUsuario.setUsuLogin(this.getResultSet().getString(3));
+                modelUsuario.setUsuSenha(this.getResultSet().getString(4));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            this.fecharConexao();
+        }
+        return modelUsuario;
+    }
+    
+        /**
+    * recupera Usuario
+    * @param pLogin
+    * @return ModelUsuario
+    */
+    public ModelUsuario getUsuarioDAO(String pLogin){
+        ModelUsuario modelUsuario = new ModelUsuario();
+        try {
+            this.conectar();
+            this.executarSQL(
+                "SELECT "
+                    + "pk_id_usuario,"
+                    + "usu_nome,"
+                    + "usu_login,"
+                    + "usu_senha"
+                 + " FROM"
+                     + " tbl_usuario"
+                 + " WHERE"
+                     + " usu_nome = '" + pLogin + "'"
                 + ";"
             );
 

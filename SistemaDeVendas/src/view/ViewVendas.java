@@ -1,7 +1,7 @@
 /*
  * A software developed by
  * Sergio Vago R. de Melo (back-end) and Isabella de Assis Santos (front-end)
- * SR Tech - "Blow your mind" 
+ * SR Tech - "Blow your mind" & Mirtilluz Desing
  */
 package view;
 
@@ -749,9 +749,15 @@ public class ViewVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfCpfCpjKeyReleased
 
     private void jtfDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDataKeyReleased
-        if(jtfData.getText().length() != 3 || jtfData.getText().length() != 5){
+        if (evt.getKeyCode() != java.awt.event.KeyEvent.VK_BACK_SPACE) {
             this.pesquisarTabela();
+        } else {
+            if (jtfData.getText().equals("")) {
+                this.pesquisarTabela();
+            }
         }
+
+
     }//GEN-LAST:event_jtfDataKeyReleased
 
     /**
@@ -969,7 +975,7 @@ public class ViewVendas extends javax.swing.JFrame {
             String texto = jtfCpfCpj.getText().toUpperCase();
             classificador.setRowFilter(RowFilter.regexFilter(texto, 1));
         }
-        if(!(jtfData.getText().equals(""))) {
+        if (!(jtfData.getText().equals(""))) {
             String texto = jtfData.getText().toUpperCase();
             texto = formatadorCampoData(texto);
             System.out.println(texto);
@@ -977,15 +983,15 @@ public class ViewVendas extends javax.swing.JFrame {
             classificador.setRowFilter(RowFilter.regexFilter(texto, 3));
         }
     }
-    
-    private String formatadorCampoData(String pData){
-        if(pData.length() == 2){
+
+    private String formatadorCampoData(String pData) {
+        if (pData.length() == 2) {
             pData = pData + "/";
         }
-        if(pData.length() == 5){
+        if (pData.length() == 5) {
             pData = pData + "/";
         }
-        
+
         return pData;
     }
 }

@@ -1,7 +1,7 @@
 /*
  * A software developed by
  * Sergio Vago R. de Melo (back-end) and Isabella de Assis Santos (front-end)
- * SR Tech - "Blow your mind" 
+ * SR Tech - "Blow your mind" & Mirtilluz Desing
  */
 package view;
 
@@ -50,7 +50,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vendas SR - Sistema de Vendas com Controle de Estoque");
 
-        uJPanelImagem1.setImagem(new java.io.File("C:\\Users\\Sergio\\SistemaDeVendasJava\\SistemaDeVendas\\src\\imagens\\SR WALLPAPER.png"));
+        uJPanelImagem1.setImagem(new java.io.File("D:\\SistemaDeVendasJava\\SistemaDeVendas\\src\\imagens\\SR WALLPAPER.png"));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 

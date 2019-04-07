@@ -1,12 +1,13 @@
 /*
  * A software developed by
  * Sergio Vago R. de Melo (back-end) and Isabella de Assis Santos (front-end)
- * SR Tech - "Blow your mind" 
+ * SR Tech - "Blow your mind" & Mirtilluz Desing
  */
 package view;
 
 import controller.ControllerUsuario;
 import javax.swing.JOptionPane;
+import model.ModelSessaoUsuario;
 import model.ModelUsuario;
 
 /**
@@ -14,9 +15,10 @@ import model.ModelUsuario;
  * @author Sergio
  */
 public class ViewLogin extends javax.swing.JFrame {
+
     ControllerUsuario controllerUsuario = new ControllerUsuario();
     ModelUsuario modelUsuario = new ModelUsuario();
-    
+
     /**
      * Creates new form ViewLogin
      */
@@ -139,12 +141,16 @@ public class ViewLogin extends javax.swing.JFrame {
     private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
         modelUsuario.setUsuLogin(jtfLogin.getText().toUpperCase());
         modelUsuario.setUsuSenha(String.valueOf(jpfSenha.getPassword()));
-        if(controllerUsuario.getValidarUsuarioController(modelUsuario)){
+        if (controllerUsuario.getValidarUsuarioController(modelUsuario)) {
+            modelUsuario = controllerUsuario.getUsuarioController(jtfLogin.getText().toUpperCase());
+            ModelSessaoUsuario.codigo = modelUsuario.getIdUsuario();
+            ModelSessaoUsuario.nome = modelUsuario.getUsuNome();
+            ModelSessaoUsuario.login = modelUsuario.getUsuLogin();
             new ViewPrincipal().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Usuário ou senha incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     /**

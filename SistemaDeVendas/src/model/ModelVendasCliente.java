@@ -1,7 +1,7 @@
 /*
  * A software developed by
  * Sergio Vago R. de Melo (back-end) and Isabella de Assis Santos (front-end)
- * SR Tech - "Blow your mind" 
+ * SR Tech - "Blow your mind" & Mirtilluz Desing
  */
 package model;
 
@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Sergio
  */
 public class ModelVendasCliente {
+
     private ModelVendas modelVendas;
     private ModelCliente modelCliente;
     private ArrayList<ModelVendasCliente> listaModelVendasCliente;

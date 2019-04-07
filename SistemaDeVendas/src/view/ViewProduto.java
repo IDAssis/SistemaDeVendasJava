@@ -1,10 +1,9 @@
 /*
  * A software developed by
  * Sergio Vago R. de Melo (back-end) and Isabella de Assis Santos (front-end)
- * SR Tech - "Blow your mind"
+ * SR Tech - "Blow your mind" & Mirtilluz Desing
  */
 package view;
-
 
 import controller.ControllerProduto;
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class ViewProduto extends javax.swing.JFrame {
     ControllerProduto controllerProduto = new ControllerProduto();
     ModelProduto modelProduto = new ModelProduto();
     Formatador formatador = new Formatador();
-    
+
     /**
      * Creates new form ViewProduto
      */
@@ -259,7 +258,7 @@ public class ViewProduto extends javax.swing.JFrame {
         } else {
             this.alterarProduto();
         }
-        
+
         this.jbSalvar.setEnabled(false);
         this.jbCancelar.setEnabled(false);
     }//GEN-LAST:event_jbSalvarActionPerformed
@@ -417,7 +416,7 @@ public class ViewProduto extends javax.swing.JFrame {
             this.preencherTabelaProdutos();
             this.limparCampos();
             this.habilitarCampos(false);
-            jbNovo.setEnabled(true);        
+            jbNovo.setEnabled(true);
             jbExcluir.setEnabled(false);
             jbAlterar.setEnabled(false);
         } else {
@@ -439,11 +438,11 @@ public class ViewProduto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao alterar o produto!", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     /**
      * Tabela torna-se de busca
      */
-    private void pesquisaTabela(){
+    private void pesquisaTabela() {
         DefaultTableModel modelo = (DefaultTableModel) this.jtProdutos.getModel();
         final TableRowSorter<TableModel> classificador = new TableRowSorter<>(modelo);
         this.jtProdutos.setRowSorter(classificador);

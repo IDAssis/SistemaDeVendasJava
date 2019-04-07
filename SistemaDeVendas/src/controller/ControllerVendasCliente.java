@@ -1,7 +1,7 @@
 /*
  * A software developed by
  * Sergio Vago R. de Melo (back-end) and Isabella de Assis Santos (front-end)
- * SR Tech - "Blow your mind" 
+ * SR Tech - "Blow your mind" & Mirtilluz Desing
  */
 package controller;
 
@@ -16,9 +16,9 @@ import model.ModelVendasCliente;
 public class ControllerVendasCliente {
 
     private DAOVendasCliente dAOVendasClientes = new DAOVendasCliente();
-    
+
     public ArrayList<ModelVendasCliente> getListaVendasClienteController() {
         return this.dAOVendasClientes.getListaVendasClienteDAO();
     }
-    
+
 }
