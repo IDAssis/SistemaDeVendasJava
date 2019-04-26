@@ -58,7 +58,7 @@ public class ViewPDV extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jlOperador = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jlStatus = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -70,10 +70,6 @@ public class ViewPDV extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jtfDesconto = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jtfValorTotal = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -95,14 +91,14 @@ public class ViewPDV extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 255, 255));
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setText("01");
 
         jlOperador.setText("operador");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Status:");
 
-        jLabel7.setText("jLabel7");
+        jlStatus.setText("Caixa Livre");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Caixa:");
@@ -124,8 +120,8 @@ public class ViewPDV extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jlOperador)
-                    .addComponent(jLabel7))
-                .addContainerGap(174, Short.MAX_VALUE))
+                    .addComponent(jlStatus))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +137,7 @@ public class ViewPDV extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(jlStatus))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -164,18 +160,6 @@ public class ViewPDV extends javax.swing.JFrame {
 
         jLabel5.setText("F2 - Excluir");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel15.setText("Desconto");
-
-        jtfDesconto.setEditable(false);
-        jtfDesconto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel16.setText("Valor Total");
-
-        jtfValorTotal.setEditable(false);
-        jtfValorTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -190,8 +174,6 @@ public class ViewPDV extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addGap(0, 208, Short.MAX_VALUE)))
                         .addContainerGap())
-                    .addComponent(jtfDesconto)
-                    .addComponent(jtfValorTotal)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
@@ -199,9 +181,7 @@ public class ViewPDV extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16))
+                            .addComponent(jLabel13))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -211,15 +191,7 @@ public class ViewPDV extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtfValorBruto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtfValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
@@ -231,7 +203,7 @@ public class ViewPDV extends javax.swing.JFrame {
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -406,14 +378,19 @@ public class ViewPDV extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jmiVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVendaActionPerformed
-        viewPagamentoPDV.setValorTotal(Double.parseDouble(jtfValorBruto.getText()));
-        viewPagamentoPDV.setTextFildSubtotal();
-        viewPagamentoPDV.setVisible(true);
+        if(!(jtfValorBruto.getText().equals(""))){
+            viewPagamentoPDV.setValorTotal(Double.parseDouble(jtfValorBruto.getText()));
+            viewPagamentoPDV.setTextFildSubtotal();
+            viewPagamentoPDV.setVisible(true);
 
-        jtfValorTotal.setText(String.valueOf(viewPagamentoPDV.getValorTotal()));
-        jtfDesconto.setText(String.valueOf(viewPagamentoPDV.getDesconto()));
-        
-        salvarVenda();
+            if(viewPagamentoPDV.isPago()){
+                salvarVenda();
+            } else {
+                JOptionPane.showMessageDialog(this, "Venda não finalizada!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Não há produtos!");
+        }
     }//GEN-LAST:event_jmiVendaActionPerformed
 
     private void jmiExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExcluirActionPerformed
@@ -439,6 +416,7 @@ public class ViewPDV extends javax.swing.JFrame {
 
     //--------- own functions ---------\\
     private void pegarConteudo(java.awt.event.KeyEvent e) {
+        jlStatus.setText("Vendendo");
         int numeroItem = 0, quantidade = 1;
         DefaultTableModel modelo = (DefaultTableModel) jtProdutos.getModel();
 
@@ -489,10 +467,10 @@ public class ViewPDV extends javax.swing.JFrame {
         } catch (Exception e) {
         }
 
-        desconto = Double.parseDouble(jtfDesconto.getText());
+        desconto = viewPagamentoPDV.getDesconto();
 
         modelVendas.setVenValor(Double.parseDouble(jtfValorBruto.getText()) + desconto);
-        modelVendas.setVenValorTotal(Double.parseDouble(jtfValorTotal.getText()));
+        modelVendas.setVenValorTotal(viewPagamentoPDV.getValorTotal());
         modelVendas.setVenDesconto(desconto);
 
         codigoVenda = controllerVendas.salvarVendasController(modelVendas);
@@ -521,6 +499,8 @@ public class ViewPDV extends javax.swing.JFrame {
         if (controllerVendasProdutos.salvarVendasProdutosController(listaModelVendasProdutos)) {
             controllerProdutos.alterarEstoqueProdutoController(listaModelProdutos);
             JOptionPane.showMessageDialog(this, "Sucesso!");
+            limparCampos();
+            jlStatus.setText("Caixa Livre");
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao salvar produtos da venda!", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
@@ -568,14 +548,11 @@ public class ViewPDV extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
@@ -591,12 +568,22 @@ public class ViewPDV extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlOperador;
+    private javax.swing.JLabel jlStatus;
     private javax.swing.JMenuItem jmiExcluir;
     private javax.swing.JMenuItem jmiVenda;
     private javax.swing.JTable jtProdutos;
     private javax.swing.JFormattedTextField jtfCodigoProduto;
-    private javax.swing.JTextField jtfDesconto;
     private javax.swing.JTextField jtfValorBruto;
-    private javax.swing.JTextField jtfValorTotal;
     // End of variables declaration//GEN-END:variables
+
+
+    /*
+        Limpa os campos após a venda
+    */
+    private void limparCampos(){
+        jtfValorBruto.setText("");
+        DefaultTableModel model = (DefaultTableModel) jtProdutos.getModel();
+        model.setNumRows(0);
+        viewPagamentoPDV.limparCampos();
+    }
 }

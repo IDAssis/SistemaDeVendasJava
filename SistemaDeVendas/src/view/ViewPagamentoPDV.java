@@ -9,6 +9,7 @@ import controller.ControllerFormaPagamento;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.ModelFormaPagamento;
+import util.Formatador;
 
 /**
  *
@@ -18,19 +19,22 @@ public class ViewPagamentoPDV extends javax.swing.JDialog {
 
     ArrayList<ModelFormaPagamento> listaModelFormaPagamento = new ArrayList<>();
     ControllerFormaPagamento controllerFormaPagamento = new ControllerFormaPagamento();
-
+    Formatador formatador = new Formatador();
+    
     private String formaPagamento;
     private double valorTotal;
     private double desconto;
     private double valorRecebido;
     private double troco;
     private double subtotal;
+    private boolean pago = false;
 
     /**
      * Creates new form ViewPagamentoPDV
      */
     public ViewPagamentoPDV(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.pago = false;
         initComponents();
         listarFormaPagamento();
     }
@@ -204,9 +208,10 @@ public class ViewPagamentoPDV extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (this.troco < 0) {
+        if (this.troco < 0 || jtfTroco.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Quantidade Recebida Insuficiente", "Pagamento Insuficiente", JOptionPane.ERROR_MESSAGE);
         } else {
+            this.pago = true;
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -370,22 +375,49 @@ public class ViewPagamentoPDV extends javax.swing.JDialog {
         Calcula valor total a pagar e o troco
      */
     private void calcularPagamento() {
-        if (!(jtfDesconto.getText().equals(""))) {
-            this.desconto = Double.parseDouble(jtfDesconto.getText());
-        } else {
+        try {
+            this.desconto = formatador.converterVirgulaParaPonto(jtfDesconto.getText());
+        } catch (Exception e) {
             this.desconto = 0;
+            if(!(jtfDesconto.getText().equals(""))){
+                jtfDesconto.setText(String.valueOf(this.desconto));
+            }
         }
-
-        if (!(jtfValorRecebido.getText().equals(""))) {
-            this.valorRecebido = Double.parseDouble(jtfValorRecebido.getText());
-        } else {
+        
+        try {
+            this.valorRecebido = formatador.converterVirgulaParaPonto(jtfValorRecebido.getText());
+        } catch (Exception e) {
             this.valorRecebido = 0;
+            if(!(jtfValorRecebido.getText().equals(""))){
+                jtfValorRecebido.setText(String.valueOf(this.valorRecebido));
+            }
         }
-
+        
         this.valorTotal = this.subtotal - this.desconto;
         this.troco = valorRecebido - valorTotal;
         jlValorTotal.setText(String.valueOf(this.valorTotal));
         jtfTroco.setText(String.valueOf(this.troco));
         this.formaPagamento = jcbPagamento.getSelectedItem().toString();
+    }
+
+    /**
+     * @return the pago
+     */
+    public boolean isPago() {
+        return pago;
+    }
+
+    /**
+     * @param pago the pago to set
+     */
+    public void setPago(boolean pago) {
+        this.pago = pago;
+    }
+
+    void limparCampos() {
+        jtfDesconto.setText("");
+        jtfValorRecebido.setText("");
+        jtfSubtotal.setText("");
+        jtfTroco.setText("");
     }
 }
